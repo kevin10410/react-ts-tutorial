@@ -1,3 +1,4 @@
+import Card from '../Card'
 import ExpenseItem from './ExpenseItem'
 import './index.css'
 
@@ -14,7 +15,7 @@ interface ExpensesProps {
 
 function Expenses({ items }: ExpensesProps) {
   return (
-    <div className='expenses'>
+    <Card className='expenses'>
       {
         items.map(item =>
           <ExpenseItem
@@ -23,7 +24,7 @@ function Expenses({ items }: ExpensesProps) {
           />
         )
       }
-    </div>
+    </Card>
   )
 }
 
