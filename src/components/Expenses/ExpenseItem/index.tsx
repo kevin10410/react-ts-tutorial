@@ -1,7 +1,8 @@
-import ExpenseDate from './ExpenseDate'
+import ExpenseDate from '../ExpenseDate'
 import './index.css'
 
 interface ExpenseItemProps {
+  id: string,
   date: Date,
   title: string,
   amount: number,
