@@ -6,7 +6,7 @@ interface ExpenseItemProps {
   id: string,
   date: Date,
   title: string,
-  amount: number,
+  amount: string,
 }
 
 function ExpenseItem({ date, title, amount }: ExpenseItemProps) {

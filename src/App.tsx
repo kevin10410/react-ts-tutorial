@@ -1,18 +1,32 @@
+import { useState } from 'react';
 import Expenses from './components/Expenses';
 import NewExpense from './components/NewExpense';
 
+interface ExpenseInputData {
+  title: string,
+  amount: string,
+  date: Date,
+}
+
+interface ExpenseData extends ExpenseInputData {
+  id: string
+}
+
 function App() {
-  const items = [
-    { id: '1', date: new Date(), title: '1', amount: 200 },
-    { id: '2', date: new Date(), title: '2', amount: 200 },
-    { id: '3', date: new Date(), title: '3', amount: 200 },
-    { id: '4', date: new Date(), title: '4', amount: 200 },
-  ]
+  const [expenses, setExpenses] = useState<Array<ExpenseData>>([])
+
+  const addExpenseHandler = (inputData: ExpenseInputData) => {
+    const expenseData = {
+      ...inputData,
+      id: Math.floor(Math.random() * Math.pow(10, 8)).toString()
+    }
+    setExpenses(prevState => ([...prevState, expenseData]))
+  }
 
   return (
     <div>
-      <NewExpense />
-      <Expenses items={items}/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
+      <Expenses items={expenses}/>
     </div>
   );
 }

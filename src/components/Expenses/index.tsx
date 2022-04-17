@@ -6,7 +6,7 @@ interface Expense {
   id: string,
   date: Date,
   title: string,
-  amount: number,
+  amount: string,
 }
 
 interface ExpensesProps {
