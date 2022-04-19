@@ -22,20 +22,21 @@ function Expenses({ items }: ExpensesProps) {
     setYear(year)
   }
 
+  const filteredExpenses = items
+    .filter(({ date }) => `${date.getFullYear()}` === year)
+
+  const expensesContent = filteredExpenses.length === 0
+    ? <p>No expense</p>
+    : filteredExpenses.map(expense =>
+        <ExpenseItem key={ expense.id } { ...expense }/>)
+
   return (
     <Card className='expenses'>
       <ExpensesFilter
         year={year}
         onFilterChange={filterChangedHandler}
       />
-      {
-        items.map(item =>
-          <ExpenseItem
-            key={ item.id }
-            { ...item }
-          />
-        )
-      }
+      { expensesContent }
     </Card>
   )
 }
