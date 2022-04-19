@@ -11,13 +11,15 @@ interface ExpenseItemProps {
 
 function ExpenseItem({ date, title, amount }: ExpenseItemProps) {
   return (
-    <Card className='expense-item'>
-      <ExpenseDate date={date} />
-      <div className='expense-item__description'>
-        <h3>{ title }</h3>
-        <p className='expense-item__price'>{ amount }</p>
-      </div>
-    </Card>
+    <li>
+      <Card className='expense-item'>
+        <ExpenseDate date={date} />
+        <div className='expense-item__description'>
+          <h3>{ title }</h3>
+          <p className='expense-item__price'>{ amount }</p>
+        </div>
+      </Card>
+    </li>
   )
 }
 
