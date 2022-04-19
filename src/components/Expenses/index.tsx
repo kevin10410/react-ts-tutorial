@@ -1,5 +1,6 @@
 import Card from '../Card'
 import ExpenseList from './ExpenseList'
+import ExpenseChart from './ExpenseChart'
 import ExpensesFilter from '../ExpenseFilter'
 import './index.css'
 import { useState } from 'react'
@@ -12,17 +13,17 @@ interface Expense {
 }
 
 interface ExpensesProps {
-  items: Array<Expense>,
+  expenses: Array<Expense>,
 }
 
-function Expenses({ items }: ExpensesProps) {
+function Expenses({ expenses }: ExpensesProps) {
   const [year, setYear] = useState('2022')
 
   const filterChangedHandler = (year: string) => {
     setYear(year)
   }
 
-  const filteredExpenses = items
+  const filteredExpenses = expenses
     .filter(({ date }) => `${date.getFullYear()}` === year)
 
   return (
@@ -31,6 +32,7 @@ function Expenses({ items }: ExpensesProps) {
         year={year}
         onFilterChange={filterChangedHandler}
       />
+      <ExpenseChart expenses={filteredExpenses} />
       <ExpenseList expenses={filteredExpenses} />
     </Card>
   )
