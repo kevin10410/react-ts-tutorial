@@ -9,6 +9,7 @@ interface ExpenseInputData {
 
 interface ExpenseFormProps {
   onSaveExpenseData: (data: ExpenseInputData) => void,
+  onCancelExpenseData: () => void,
 }
 
 const ExpenseForm = (props: ExpenseFormProps) => {
@@ -45,6 +46,11 @@ const ExpenseForm = (props: ExpenseFormProps) => {
     setExpense({ date: '', title: '', amount: '' })
   }
 
+  const cancelHandler = () => {
+    props.onCancelExpenseData()
+    setExpense({ date: '', title: '', amount: '' })
+  }
+
   return (
     <form onSubmit={submitHandler}>
       <div className='new-expense__controls'>
@@ -71,6 +77,7 @@ const ExpenseForm = (props: ExpenseFormProps) => {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button type='button' onClick={cancelHandler}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
